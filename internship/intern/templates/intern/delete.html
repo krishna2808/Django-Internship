@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete Account</title>
+</head>
+<body>
+
+{% if temp %}
+<center> <h3> {{ temp  }}</h3> </center>
+
+{% endif %}
+
+<center>
+  <form action="{% url 'delete' %}" method="POST">
+       {% csrf_token %}
+  <label> Enter Username : </label> <input type="text" name="username" placeholder="Username">
+  <input type="submit" value="Delete Account ">
+  </form>
+
+</center>
+
+
+</body>
+</html>

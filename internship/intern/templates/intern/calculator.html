@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Addition  of Two number </title>
+</head>
+<body>
+<center>
+  <form action="{% url 'calculator' %}" method="POST">
+      {% csrf_token %}
+      <label>Enter number</label> <input type="text" name="num1" placeholder=" First Number "> <br> <br>
+      <label>Enter number</label> <input type="text" name="num2" placeholder=" Second  Number "> <br> <br>
+    <input type="submit" value="Sum">
+
+  </form>
+</center>
+<center><h3> Sum of two number : {{sum}} </h3> </center>
+</body>
+</html>

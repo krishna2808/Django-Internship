@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update </title>
+            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
+</head>
+<body>
+{% if invalid %}
+<center> <h3> {{invalid }}</h3> </center>
+{% endif %}
+<center>
+  <form action="{% url 'update' %}" method="POST"  enctype="multipart/form-data">
+       {% csrf_token %}
+  <label> Enter Username : </label> <input type="text" name="username" placeholder="Username">
+  <input type="submit" value="Find">
+  </form>
+
+</center>
+
+</body>
+</html>

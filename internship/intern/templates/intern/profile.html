@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
+</head>
+<body>
+
+
+<center>
+    <h3>    <a href="{% url 'logout' %}"> Logout</a>  </h3>  </center>
+
+{% if successfully %}
+<center><h3> {{User.username }} {{ successfully }} </h3></center>
+{% endif %}
+
+
+<div class="row">
+    <div class="col-md-6 grid-margin stretch-card">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title">Update Profile Details</h4>
+            <p class="card-description"> Basic Details </p>
+            <form class="forms-sample" method="POST" enctype="multipart/form-data" >
+                 {% csrf_token %}
+              <div class="form-group">
+                <label >Username</label>
+                <input type="text" class="form-control" name="username" value="{{ User.username }}" placeholder="Username">
+              </div>
+
+               <div class="form-group">
+                <label >Full Name</label>
+                <input type="text" class="form-control" name="fullname" value="{{ User.fullname }}" placeholder="Fullname">
+              </div>
+
+
+
+
+              <div class="form-group">
+                <label >Email address</label>
+                <input type="email" class="form-control" name="email" value="{{ User.email }}" placeholder="Email">
+              </div>
+              <div class="form-group">
+                <label >Password</label>
+                <input type="text" class="form-control"  name="password" value="{{ User.password }}" placeholder="Password">
+              </div>
+              <div class="form-group">
+                <label>File upload</label>
+
+                {% if User.image %}
+                    <br>
+                    <img src="{{ User.image.url }}" width="200px">
+                {% endif %}
+                <input type="file" name="image" class="form-control">
+              </div>
+
+              <div class="form-group">
+                <label >Address</label>
+                <textarea class="form-control"  name="address"  >
+                    {{ User.address }}
+                </textarea>
+              </div>
+              <button type="submit" class="btn btn-success mr-2">Submit</button>
+              <button class="btn btn-light">Cancel</button>
+            </form>
+          </div>
+        </div>
+      </div>
+</div>
+
+
+
+</body>
+</html>

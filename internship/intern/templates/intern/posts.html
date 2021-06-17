@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+   <title>Posts</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
+</head>
+
+<body>
+
+<center>
+    <table>
+        <tr>
+            <td> <h3> <a href="{% url 'profile' %}"  >  Profile </a> </h3> </td>
+            <td>  <h3>  <a href="{% url 'postUpload' %}">  Post Upload</a> </h3> </td>
+            <td>  <h3><a href="{% url 'logout' %}"> Logout</a> </h3></td>
+        </tr>
+    </table>
+
+</center>
+<br>
+{% if detailObjects %}
+{% for i in detailObjects %}
+ <h4><a name="userDetails" href="{% url 'userDetails' %}">  @{{i.username}}  </a> </h4>
+<b>Title's post : </b> {{i.title}} <br>
+<img src="{{ i.image.url }}" > <br>
+{{i.created}} <br>
+{{i.description}}  <br> <br>
+{% endfor %}
+{%else%}
+<h3> Post isn't available </h3>
+{% endif %}
+
+</body>
+</html>
